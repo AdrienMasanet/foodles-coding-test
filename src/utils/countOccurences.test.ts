@@ -43,4 +43,9 @@ describe("Test countOccurences function", () => {
       { word: "bat", count: 2 },
     ]);
   });
+
+  it("should return an array of words that is *n* length if *n* > length of array", () => {
+    const result = countOccurences("foo foo foo foo baz baz baz bas bas bas bas bas bat bae bae bay bay bay bau baf", 3);
+    expect(result.length).toBe(3);
+  });
 });
