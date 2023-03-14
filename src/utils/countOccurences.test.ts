@@ -26,23 +26,21 @@ describe("Test countOccurences function", () => {
     expect(result.length).toBe(6);
   });
 
-  it("should return an array of words"),
-    () => {
-      const result = countOccurences("foo foo foo foo bar baz baz baz bat bay bas bas", 3);
-      expect(result).toEqual<Word[]>([
-        { word: "foo", count: 4 },
-        { word: "baz", count: 3 },
-        { word: "bas", count: 2 },
-      ]);
-    };
+  it("should return an array of words", () => {
+    const result = countOccurences("foo foo foo foo bar baz baz baz bat bay bas bas", 3);
+    expect(result).toEqual<Word[]>([
+      { word: "foo", count: 4 },
+      { word: "baz", count: 3 },
+      { word: "bas", count: 2 },
+    ]);
+  });
 
-  it("should return an array of words ordered by count in descending order"),
-    () => {
-      const result = countOccurences("foo foo foo foo bar baz baz baz bat bay bas bas bat", 3);
-      expect(result).toEqual<Word[]>([
-        { word: "foo", count: 4 },
-        { word: "baz", count: 3 },
-        { word: "bas", count: 2 },
-      ]);
-    };
+  it("should return an array of words ordered by count in descending order", () => {
+    const result = countOccurences("foo foo foo foo bar baz baz baz bat bay bas bas bat", 3);
+    expect(result).toEqual<Word[]>([
+      { word: "foo", count: 4 },
+      { word: "baz", count: 3 },
+      { word: "bat", count: 2 },
+    ]);
+  });
 });
