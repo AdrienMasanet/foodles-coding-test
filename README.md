@@ -1,10 +1,6 @@
-# Hello 😊
+# Hello 😊 This is my solution to the coding test for Foodles.
 
-## This is my solution to the coding test for Foodles.
-
-</br>
-
-### Here is the exercice
+## Here is the exercice
 
 ```
 1) Write a function that takes as input (sentence: String, n: Number)
@@ -27,21 +23,28 @@ You are free to chose the programming language that you are the most comfortable
 
 </br>
 
-### Tools I used
+## Tools I used
 
-I chose to use Vite, React and Typescript to solve this exercise.
+I chose to use [Vite](https://vitejs.dev/), [React](https://fr.reactjs.org/) and [Typescript](https://www.typescriptlang.org/) to solve this exercise and tests were written using [Vitest](https://vitest.dev/)
 </br>
-The WordsOccurences.tsx file is a React component that is called in App.tsx.
 </br>
-WordsOccurences component calls the function countOccurences that I wrote to solve the problem.
+
+## How it works
+
+The WordsOccurences.tsx file is a React component that is called in App.tsx. This React component shows the original sentence and the list of words computed by countOccurences() by displaying their string and their count.
+</br>
+</br>
+WordsOccurences component calls the function countOccurences() that I wrote to solve the problem.
+</br>
 </br>
 The function countOccurences is located under utils/WordsOccurences.tsx, and the tests for this function are located under tests/WordsOccurences.test.tsx
+</br>
 </br>
 I added a lot of comments on purpose to better explain the code inside the countOccurences function.
 </br>
 </br>
 
-### How to use
+## How to use
 
 To run the tests, you can use the following command :
 
