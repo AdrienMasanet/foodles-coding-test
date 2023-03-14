@@ -18,7 +18,6 @@ export default function countOccurences(sentence: string, n: number): Word[] {
   /* For each word in the sentence, check if it is already in the outputWords array
    * If it is, increment the count of that word in the outputWords array
    * If it is not, add it to the outputWords array with a count of 1
-   * If the outputWords array has reached the desired length, stop looping
    */
   wordsInSentence.forEach((word) => {
     const wordInOutputWords = outputWords.find((outputWord) => {
