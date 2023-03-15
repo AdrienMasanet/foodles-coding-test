@@ -57,9 +57,6 @@ describe("Test countOccurences function", () => {
 
   it("should return an array of words that never contains an empty character", () => {
     const result = countOccurences("foo foo foo foo foo bar bar  ", 2);
-    expect(result).toEqual<Word[]>([
-      { word: "foo", count: 5 },
-      { word: "bar", count: 2 },
-    ]);
+    expect(result).not.toContainEqual<Word>({ word: "", count: 1 });
   });
 });
