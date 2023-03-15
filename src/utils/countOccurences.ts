@@ -7,57 +7,41 @@ import Word from "../interfaces/Word";
  * @returns {Word[]} An array of Word objects containing the most common words in a sentence in descending order.
  */
 export default function countOccurences(sentence: string, n: number): Word[] {
-  // If n is 0 or a negative number, return an empty array
+  // If n is 0 or a negative number, early return an empty array
   if (n <= 0) return [];
 
-  // Here I split the sentence each time there is a space
-  const wordsInSentence = sentence.split(" ");
+  return (
+    sentence
 
-  const outputWords: Word[] = [];
+      .split(" ") // Split the sentence into an array of words using spaces as the separator
 
-  /* For each word in the sentence, check if it is already in the outputWords array
-   * If it is, increment the count of that word in the outputWords array
-   * If it is not, add it to the outputWords array with a count of 1
-   */
-  wordsInSentence.forEach((word) => {
-    if (word === "" || word === " ") return;
+      .reduce((accumulator: Word[], word: string): Word[] => {
+        // If word is an empty string, early return the current iteration
+        if (!word) return accumulator;
 
-    const wordInOutputWords = outputWords.find((outputWord) => {
-      return outputWord.word === word;
-    });
+        // If the word is already in the accumulator assign it to a new wordInAccumulator variable
+        const wordInAccumulator: Word | undefined = accumulator.find((wordInAccumulator) => wordInAccumulator.word === word);
 
-    if (wordInOutputWords) {
-      wordInOutputWords.count++;
-    } else {
-      outputWords.push({
-        word,
-        count: 1,
-      });
-    }
-  });
+        /* If wordInAccumulator is not undefined (which means it is already in the building array), increment the count of the
+         * word in the accumulator and early return the current iteration */
+        if (wordInAccumulator) {
+          wordInAccumulator.count++;
+          return accumulator;
+        }
 
-  // Sort the outputWords array by count in descending order
-  outputWords.sort((firstWord: Word, secondWord: Word) => {
-    // If the counts are equal, sort by descending alphabetical order and do an early return
-    if (firstWord.count === secondWord.count) {
-      if (firstWord.word < secondWord.word) {
-        return -1;
-      } else if (firstWord.word > secondWord.word) {
-        return 1;
-      }
-    }
+        /* If wordInAccumulator is undefined, the if statement above was not executed so return the accumulator with the new word
+         * with the initial count of 1 */
+        return [...accumulator, { word, count: 1 }];
+      }, []) // The starting value of the accumulator is an empty array
 
-    return secondWord.count - firstWord.count;
-  });
+      .sort((firstWord: Word, secondWord: Word) => {
+        if (firstWord.count !== secondWord.count) {
+          return secondWord.count - firstWord.count; // sort by count descending
+        }
+        return firstWord.word.localeCompare(secondWord.word); // sort by alphabetical order if count is equal
+      })
 
-  /* Keep only the first *n* words in the outputWords array by using splice().
-   * I don't use an early return in the forEach loop above because I want to count
-   * ALL the occurences and sort the array before trimming it.
-   * I don't forget to not trim the array if n is greater than the length of the array !
-   */
-  if (n < outputWords.length) {
-    outputWords.splice(n);
-  }
-
-  return outputWords;
+      // Slice the array to the first n elements only if n is less than the length of the array
+      .slice(0, n)
+  );
 }
