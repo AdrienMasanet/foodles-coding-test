@@ -36,11 +36,21 @@ describe("Test countOccurences function", () => {
   });
 
   it("should return an array of words ordered by count in descending order", () => {
-    const result = countOccurences("foo foo foo foo bar baz baz baz bat bay bas bas bat", 3);
+    const result = countOccurences("foo foo foo foo bar baz baz baz bat bay bas bat", 3);
     expect(result).toEqual<Word[]>([
       { word: "foo", count: 4 },
       { word: "baz", count: 3 },
       { word: "bat", count: 2 },
+    ]);
+  });
+
+  it("should return an array of words ordered by count in descending order and then by alphabetical order if count is equal between two words", () => {
+    const result = countOccurences("foo foo foo foo bar baz bay bas bat bat bat bat", 4);
+    expect(result).toEqual<Word[]>([
+      { word: "bat", count: 4 },
+      { word: "foo", count: 4 },
+      { word: "bar", count: 1 },
+      { word: "bas", count: 1 },
     ]);
   });
 

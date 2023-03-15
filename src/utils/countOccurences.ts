@@ -36,6 +36,17 @@ export default function countOccurences(sentence: string, n: number): Word[] {
 
   // Sort the outputWords array by count in descending order
   outputWords.sort((a, b) => {
+    // If the counts are equal, sort by descending alphabetical order and do an early return
+    if (a.count === b.count) {
+      if (a.word < b.word) {
+        return -1;
+      } else if (a.word > b.word) {
+        return 1;
+      } else {
+        return 0;
+      }
+    }
+
     return b.count - a.count;
   });
 
