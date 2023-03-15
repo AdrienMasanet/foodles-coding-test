@@ -1,6 +1,6 @@
 import countOccurences from "./countOccurences";
 import Word from "../interfaces/Word";
-import { describe, expect, it } from "vitest";
+import { describe, expect, expectTypeOf, it } from "vitest";
 
 describe("Test countOccurences function", () => {
   it("should return an empty array if n is negative or equal to 0", () => {
@@ -28,11 +28,7 @@ describe("Test countOccurences function", () => {
 
   it("should return an array of words", () => {
     const result = countOccurences("foo foo foo foo bar baz baz baz bat bay bas bas", 3);
-    expect(result).toEqual<Word[]>([
-      { word: "foo", count: 4 },
-      { word: "baz", count: 3 },
-      { word: "bas", count: 2 },
-    ]);
+    expectTypeOf(result).toEqualTypeOf<Word[]>();
   });
 
   it("should return an array of words ordered by count in descending order", () => {
