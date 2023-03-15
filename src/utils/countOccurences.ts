@@ -20,6 +20,8 @@ export default function countOccurences(sentence: string, n: number): Word[] {
    * If it is not, add it to the outputWords array with a count of 1
    */
   wordsInSentence.forEach((word) => {
+    if (word === "" || word === " ") return;
+
     const wordInOutputWords = outputWords.find((outputWord) => {
       return outputWord.word === word;
     });

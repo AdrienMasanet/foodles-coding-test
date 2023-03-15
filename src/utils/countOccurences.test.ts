@@ -54,4 +54,12 @@ describe("Test countOccurences function", () => {
     const result = countOccurences("foo foo foo foo baz baz baz bas bas bas bas bas bat bae bae bay bay bay bau baf", 3);
     expect(result.length).toBe(3);
   });
+
+  it("should return an array of words that never contains an empty character", () => {
+    const result = countOccurences("foo foo foo foo foo bar bar  ", 2);
+    expect(result).toEqual<Word[]>([
+      { word: "foo", count: 5 },
+      { word: "bar", count: 2 },
+    ]);
+  });
 });
