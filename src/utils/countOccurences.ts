@@ -44,8 +44,6 @@ export default function countOccurences(sentence: string, n: number): Word[] {
         return -1;
       } else if (firstWord.word > secondWord.word) {
         return 1;
-      } else {
-        return 0;
       }
     }
 
