@@ -14,16 +14,14 @@ const MyComponent = ({ initialSentence, listMaxLength }: MyComponentProps) => {
     <div>
       <h1>Count words occurences in sentence</h1>
       <p>The sentence was : {initialSentence}</p>
-      <p>
-        The output is :
-        <ul>
-          {outputList.map((word, index) => (
-            <li key={index}>
-              {word.word} appears {word.count} times
-            </li>
-          ))}
-        </ul>
-      </p>
+      The output is :
+      <ul>
+        {outputList.map((word, index) => (
+          <li key={index}>
+            {word.word} appears {word.count} times
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };
