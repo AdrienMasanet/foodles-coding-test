@@ -1,4 +1,4 @@
-# Hello 😊 This is my solution to the coding test for Foodles.
+# Hello 😊 This is my solution to the first coding test for Foodles.
 
 ## Notes
 
