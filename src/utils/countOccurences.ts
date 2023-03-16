@@ -39,7 +39,7 @@ export default function countOccurences(sentence: string, n: number): Word[] {
         return firstWord.word.localeCompare(secondWord.word);
       })
 
-      // Slice the array to the first n elements only if n is less than the length of the array
+      // Slice the array to the first n elements
       .slice(0, n)
   );
 }
